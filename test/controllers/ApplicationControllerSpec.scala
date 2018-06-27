@@ -5,6 +5,7 @@ import java.util.UUID
 import com.google.inject.AbstractModule
 import com.mohiva.play.silhouette.api.{Environment, LoginInfo}
 import com.mohiva.play.silhouette.test._
+import controllers.client.ApplicationController
 import models.User
 import net.codingwell.scalaguice.ScalaModule
 import org.specs2.mock.Mockito
@@ -17,7 +18,7 @@ import utils.auth.CookieEnv
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
- * Test case for the [[controllers.ApplicationController]] class.
+ * Test case for the [[ApplicationController]] class.
  */
 class ApplicationControllerSpec extends PlaySpecification with Mockito {
   sequential

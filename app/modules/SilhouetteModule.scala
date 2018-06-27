@@ -24,7 +24,6 @@ import com.mohiva.play.silhouette.password.{BCryptPasswordHasher, BCryptSha256Pa
 import com.mohiva.play.silhouette.persistence.daos.{DelegableAuthInfoDAO, MongoAuthInfoDAO}
 import com.mohiva.play.silhouette.persistence.repositories.DelegableAuthInfoRepository
 import models.daos._
-import models.services.{AuthTokenService, AuthTokenServiceImpl, UserService, UserServiceImpl}
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.codingwell.scalaguice.ScalaModule
@@ -34,6 +33,7 @@ import play.api.libs.openid.OpenIdClient
 import play.api.libs.ws.WSClient
 import play.api.mvc.CookieHeaderEncoding
 import play.modules.reactivemongo.ReactiveMongoApi
+import service._
 import utils.auth._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -182,7 +182,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     vkProvider: VKProvider,
     twitterProvider: TwitterProvider,
     xingProvider: XingProvider,
-    yahooProvider: YahooProvider): SocialProviderRegistry = {
+    yahooProvider: YahooProvider,
+    localhostProvider: LocalhostProvider): SocialProviderRegistry = {
 
     SocialProviderRegistry(Seq(
       googleProvider,
@@ -190,7 +191,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
       twitterProvider,
       vkProvider,
       xingProvider,
-      yahooProvider
+      yahooProvider,
+      localhostProvider
     ))
   }
 
@@ -465,6 +467,22 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     configuration: Configuration): GoogleProvider = {
 
     new GoogleProvider(httpLayer, socialStateHandler, configuration.underlying.as[OAuth2Settings]("silhouette.google"))
+  }
+
+  /**
+    * Provides the Localhost provider.
+    *
+    * @param httpLayer The HTTP layer implementation.
+    * @param configuration The Play configuration.
+    * @return The Localhost provider.
+    */
+  @Provides
+  def provideLocalhostProvider(
+                                httpLayer: HTTPLayer,
+                                socialStateHandler: SocialStateHandler,
+                                configuration: Configuration): LocalhostProvider = {
+
+    new LocalhostProvider(httpLayer, socialStateHandler, configuration.underlying.as[OAuth2Settings]("silhouette.localhost"))
   }
 
   /**

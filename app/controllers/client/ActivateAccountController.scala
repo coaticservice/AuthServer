@@ -1,15 +1,16 @@
-package controllers
+package controllers.client
 
 import java.net.URLDecoder
 import java.util.UUID
 
-import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.impl.providers.CredentialsProvider
-import models.services.{AuthTokenService, UserService}
+import controllers.routes
+import javax.inject.Inject
 import play.api.i18n.{I18nSupport, Messages}
 import play.api.libs.mailer.{Email, MailerClient}
 import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
+import service.{AuthTokenService, UserService}
 import utils.auth.CookieEnv
 
 import scala.concurrent.{ExecutionContext, Future}

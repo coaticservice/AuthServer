@@ -3,6 +3,7 @@ package models
 import java.util.UUID
 
 import com.mohiva.play.silhouette.api.{Identity, LoginInfo}
+import models.Role.Role
 import play.api.libs.json.{Json, OFormat}
 
 /**
@@ -20,6 +21,7 @@ import play.api.libs.json.{Json, OFormat}
 case class User(
                  userID: UUID,
                  loginInfo: LoginInfo,
+                 roles: Set[Role] = Set(Role.User),
                  firstName: Option[String],
                  lastName: Option[String],
                  fullName: Option[String],

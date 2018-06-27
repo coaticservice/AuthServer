@@ -25,5 +25,5 @@ class CustomUnsecuredErrorHandler extends UnsecuredErrorHandler {
       case _ => notAuthorized
     }.getOrElse(notAuthorized)
 
-  private val notAuthorized = Future.successful(Redirect(controllers.routes.ApplicationController.index()))
+  private val notAuthorized = Future.successful(Redirect(controllers.client.routes.ApplicationController.index()))
 }

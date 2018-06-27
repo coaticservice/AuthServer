@@ -1,17 +1,18 @@
-package controllers
+package controllers.client
 
 import java.util.UUID
 
-import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.api.util.{PasswordHasherRegistry, PasswordInfo}
 import com.mohiva.play.silhouette.impl.providers.CredentialsProvider
+import controllers.{AssetsFinder, routes}
 import forms.ResetPasswordForm
-import models.services.{AuthTokenService, UserService}
+import javax.inject.Inject
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.{I18nSupport, Messages}
 import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
+import service.{AuthTokenService, UserService}
 import utils.auth.CookieEnv
 
 import scala.concurrent.{ExecutionContext, Future}

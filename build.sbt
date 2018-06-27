@@ -1,5 +1,5 @@
-name := """$name$"""
-organization := "$organization$"
+name := """AuthServer"""
+organization := "coaticservice"
 
 version := "1.0-SNAPSHOT"
 

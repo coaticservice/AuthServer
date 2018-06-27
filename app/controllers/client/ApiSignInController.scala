@@ -1,13 +1,13 @@
-package controllers
+package controllers.client
 
 import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.api.util.Clock
 import com.mohiva.play.silhouette.impl.providers._
 import javax.inject.Inject
-import models.services.UserService
 import play.api.Configuration
 import play.api.i18n.I18nSupport
 import play.api.mvc.{AbstractController, ControllerComponents}
+import service.UserService
 import utils.auth.JwtEnv
 
 import scala.concurrent.ExecutionContext

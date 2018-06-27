@@ -1,4 +1,4 @@
-package controllers
+package controllers.client
 
 import java.util.UUID
 
@@ -7,16 +7,16 @@ import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.api.services.AvatarService
 import com.mohiva.play.silhouette.api.util.PasswordHasherRegistry
 import com.mohiva.play.silhouette.impl.providers._
+import controllers.AssetsFinder
 import formatters.json.Token
-import forms.SignUpForm
 import javax.inject.Inject
-import models.services.{AuthTokenService, UserService}
 import models.{SignUp, User}
-import org.webjars.play.WebJarsUtil
+import org.webjars.play.{WebJarsUtil, routes}
 import play.api.i18n.{I18nSupport, Messages}
 import play.api.libs.json.{JsError, Json}
 import play.api.libs.mailer.{Email, MailerClient}
-import play.api.mvc.{AbstractController, AnyContent, ControllerComponents, Request}
+import play.api.mvc.{AbstractController, ControllerComponents}
+import service.{AuthTokenService, UserService}
 import utils.auth.JwtEnv
 import utils.responses.rest.Bad
 

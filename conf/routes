@@ -3,36 +3,37 @@
 # ~~~~
 
 #OpenIdConnect
-GET         /login                           controllers.oidc.LoginController.login
-GET         /cb                              controllers.oidc.LoginController.cb
+GET         /v1/oauth2/auth                  controllers.provider.LoginController.auth(scope: String, client_id: String, response_type: String, redirect_uri: String)
+POST        /v1/oauth2/token                 controllers.provider.LoginController.token
+#GET        /v1/oauth2/
 
 # Swagger API
 GET         /swagger.json                    controllers.ApiHelpController.getResources
 
-GET         /docs                            controllers.ApplicationController.docs
+GET         /docs                            controllers.client.ApplicationController.docs
 
-POST        /api/login                       controllers.ApiCredentialsAuthController.authenticate
+POST        /api/login                       controllers.client.ApiCredentialsAuthController.authenticate
 
-GET         /                                controllers.ApplicationController.index
-GET         /signOut                         controllers.ApplicationController.signOut
-GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
+GET         /                                controllers.client.ApplicationController.index
+GET         /signOut                         controllers.client.ApplicationController.signOut
+GET         /authenticate/:provider          controllers.client.SocialAuthController.authenticate(provider)
 
-GET         /signUp                          controllers.SignUpController.view
-POST        /signUp                          controllers.SignUpController.submit
-POST        /api/register                    controllers.ApiSignUpController.apiSignUp
+GET         /signUp                          controllers.client.SignUpController.view
+POST        /signUp                          controllers.client.SignUpController.submit
+POST        /api/register                    controllers.client.ApiSignUpController.apiSignUp
 
-GET         /signIn                          controllers.SignInController.view
-POST        /signIn                          controllers.SignInController.submit
+GET         /signIn                          controllers.client.SignInController.view
+POST        /signIn                          controllers.client.SignInController.submit
 
-GET         /password/forgot                 controllers.ForgotPasswordController.view
-POST        /password/forgot                 controllers.ForgotPasswordController.submit
-GET         /password/reset/:token           controllers.ResetPasswordController.view(token: java.util.UUID)
-POST        /password/reset/:token           controllers.ResetPasswordController.submit(token: java.util.UUID)
-GET         /password/change                 controllers.ChangePasswordController.view
-POST        /password/change                 controllers.ChangePasswordController.submit
+GET         /password/forgot                 controllers.client.ForgotPasswordController.view
+POST        /password/forgot                 controllers.client.ForgotPasswordController.submit
+GET         /password/reset/:token           controllers.client.ResetPasswordController.view(token: java.util.UUID)
+POST        /password/reset/:token           controllers.client.ResetPasswordController.submit(token: java.util.UUID)
+GET         /password/change                 controllers.client.ChangePasswordController.view
+POST        /password/change                 controllers.client.ChangePasswordController.submit
 
-GET         /account/email/:email            controllers.ActivateAccountController.send(email: String)
-GET         /account/activate/:token         controllers.ActivateAccountController.activate(token: java.util.UUID)
+GET         /account/email/:email            controllers.client.ActivateAccountController.send(email: String)
+GET         /account/activate/:token         controllers.client.ActivateAccountController.activate(token: java.util.UUID)
 
 ->          /webjars                         webjars.Routes
 

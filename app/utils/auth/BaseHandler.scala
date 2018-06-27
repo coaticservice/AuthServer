@@ -19,9 +19,9 @@ trait BaseHandler extends SecuredErrorHandler with I18nSupport with RequestExtra
     Future.successful(render {
       case Accepts.Json() => status(toJsonError(msg))
       case _ =>  if(authenticated) {
-        Redirect(controllers.routes.SignInController.view()).flashing("error" -> Messages("access.denied"))
+        Redirect(controllers.client.routes.SignInController.view()).flashing("error" -> Messages("access.denied"))
       } else {
-        Redirect(controllers.routes.SignInController.view())
+        Redirect(controllers.client.routes.SignInController.view())
       }
     })
 

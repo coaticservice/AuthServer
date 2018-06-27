@@ -1,6 +1,5 @@
-package controllers
+package controllers.client
 
-import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.api.exceptions.ProviderException
 import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
@@ -9,12 +8,13 @@ import com.mohiva.play.silhouette.impl.exceptions.IdentityNotFoundException
 import com.mohiva.play.silhouette.impl.providers._
 import formatters.json.{CredentialFormat, Token}
 import io.swagger.annotations.{Api, ApiImplicitParam, ApiImplicitParams, ApiOperation}
+import javax.inject.Inject
 import models.SignUp
-import models.services.UserService
 import play.api.Configuration
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json.Json
 import play.api.mvc.{AbstractController, ControllerComponents}
+import service.UserService
 import utils.auth.JwtEnv
 
 import scala.concurrent.{ExecutionContext, Future}

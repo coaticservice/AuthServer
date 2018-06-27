@@ -1,7 +1,8 @@
-package controllers
+package controllers.client
 
-import com.mohiva.play.silhouette.api.{LogoutEvent, Silhouette}
 import com.mohiva.play.silhouette.api.actions.SecuredRequest
+import com.mohiva.play.silhouette.api.{LogoutEvent, Silhouette}
+import controllers.{AssetsFinder, routes}
 import javax.inject.{Inject, Singleton}
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport
